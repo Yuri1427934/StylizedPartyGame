@@ -124,11 +124,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controlManager: {fileID: 0}
   rb: {fileID: 5740400664791961625}
-  MoveSpeed: 20
-  acceleration: 5
-  decceleration: 10
-  VelPower: 1
-  frictionAmount: 0.2
+  MoveSpeed: 10
+  acceleration: 2
+  decceleration: 5
+  VelPower: 1.2
+  JumpForce: 3.5
+  CheckPosition: {x: 0, y: -1, z: 0}
+  CheckSize: {x: 0.6, y: 0.2, z: 0.6}
+  GroundLayers:
+    serializedVersion: 2
+    m_Bits: 8
+  GravityScale: 0.2
   Movement: {x: 0, y: 0, z: 0}
 --- !u!54 &5740400664791961625
 Rigidbody:
