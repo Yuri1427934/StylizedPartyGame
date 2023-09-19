@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 1550763210833590040}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -167,6 +167,10 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: eaff2603-11cf-4149-a34b-1481e4dff8d3
     m_ActionName: Interact/Sabotage[/XInputControllerWindows/buttonWest]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: cbfb16f3-4c44-4b62-9e5a-3c0f7883b868
+    m_ActionName: Interact/Spawn[/XInputControllerWindows/buttonSouth]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Interact
