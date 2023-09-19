@@ -24,9 +24,18 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Inveract",
+                    "name": "Interact",
                     "type": "Button",
                     "id": "55ba37ef-9725-442c-a3a4-6dd91b4fd399",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Sabotage",
+                    "type": "Button",
+                    "id": "718b0989-f8fe-490a-93ba-58455f04a5e3",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -47,12 +56,34 @@
                 },
                 {
                     "name": "",
-                    "id": "7e28e5b4-6f38-4c86-8712-5f58a9d9576e",
-                    "path": "<Gamepad>/buttonWest",
+                    "id": "e0e3a5e1-a098-4624-98dd-ed22bf898122",
+                    "path": "<Keyboard>/space",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Inveract",
+                    "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7e28e5b4-6f38-4c86-8712-5f58a9d9576e",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Interact",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "919fd431-7372-40c4-af80-aaeb7909d32c",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Interact",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -165,6 +196,28 @@
                     "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "54fee24a-c5c6-4cff-8e84-ddc0913d1c0d",
+                    "path": "<Gamepad>/buttonWest",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Sabotage",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "bc8778a1-4d7a-44d4-a07a-4f3a58e3211c",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Sabotage",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }

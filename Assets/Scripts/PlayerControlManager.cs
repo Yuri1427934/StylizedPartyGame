@@ -8,11 +8,21 @@ public class PlayerControlManager : MonoBehaviour
 {
     [SerializeField]
     private Vector3 Movement;
+    /// <summary>
+    /// The movement event for object to subscribe
+    /// </summary>
     public UnityEvent<Vector3> MovementEvent;
 
     [SerializeField]
     private bool Jump;
+    /// <summary>
+    /// The jump event for object to subscribe
+    /// </summary>
     public UnityEvent<bool> JumpEvent;
+    /// <summary>
+    /// Get movement input
+    /// </summary>
+    /// <param name="i_input"></param>
     public void GetMovement(CallbackContext i_input)
     {
         if (i_input.started) return;
@@ -20,6 +30,10 @@ public class PlayerControlManager : MonoBehaviour
         MovementEvent.Invoke(Movement);
     }
 
+    /// <summary>
+    /// Get jump input
+    /// </summary>
+    /// <param name="i_input"></param>
     public void GetJump(CallbackContext i_input)
     {
         if (i_input.started) return;
