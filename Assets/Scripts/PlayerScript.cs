@@ -56,6 +56,7 @@ public class PlayerScript : MonoBehaviour
         controlManager = i_controller;
         i_controller.MovementEvent.AddListener(GetMovementInput);
         i_controller.JumpEvent.AddListener(GetJumpInput);
+        i_controller.InteractEvent.AddListener(GetInteractInput);
     }
     /// <summary>
     /// Get the input of movement
@@ -73,6 +74,11 @@ public class PlayerScript : MonoBehaviour
     private void GetJumpInput(bool i_jump)
     {
         if (i_jump && IsGround()) this.rb.AddForce(Vector3.up * JumpForce, ForceMode.Impulse);
+    }
+
+    private void GetInteractInput()
+    {
+        Debug.Log("Interact");
     }
     #endregion
     #region-Movement Methods
