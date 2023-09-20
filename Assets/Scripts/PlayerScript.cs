@@ -23,7 +23,7 @@ public class PlayerScript : MonoBehaviour
     public Vector3 CheckSize;
     public LayerMask GroundLayers;
     [Header("Info")]
-
+    private bool IsStun;
     public float GravityScale = 2f;
 
     [SerializeField]
@@ -43,6 +43,7 @@ public class PlayerScript : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (IsStun) return;
         MoveFunc();
         RotateFunc();
     }
@@ -128,7 +129,7 @@ public class PlayerScript : MonoBehaviour
     /// <returns></returns>
     public Vector3 GetMovement()
     {
-       
+
         Vector3 TargetSpeed = GetRelativeMovement() * MoveSpeed;
         return new Vector3(GetDirForce(TargetSpeed.x, rb.velocity.x), 0, GetDirForce(TargetSpeed.z, rb.velocity.z));
     }
@@ -157,6 +158,19 @@ public class PlayerScript : MonoBehaviour
         return Mathf.Pow(Mathf.Abs(SpeedDif) * accelRate, VelPower) * Mathf.Sign(SpeedDif);
     }
     #endregion
+
+    public void StunFunc()
+    {
+        if (!IsStun)
+            StartCoroutine(StunTimer());
+    }
+
+    IEnumerator StunTimer()
+    {
+        IsStun = true;
+        yield return new WaitForSecondsRealtime(3f);
+        IsStun = false;
+    }
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = new Color(1, 0, 0);
