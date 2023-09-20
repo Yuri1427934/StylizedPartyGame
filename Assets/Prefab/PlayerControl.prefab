@@ -92,9 +92,37 @@ MonoBehaviour:
     m_ActionId: a2b8a64f-29b0-4323-b792-dbcd11da1f36
     m_ActionName: GamePlayInput/Jump[/XInputControllerWindows/buttonSouth,/XInputControllerWindows1/buttonSouth]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 3227742021609240017}
+        m_TargetAssemblyTypeName: PlayerControlManager, Assembly-CSharp
+        m_MethodName: GetInteract
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 55ba37ef-9725-442c-a3a4-6dd91b4fd399
     m_ActionName: GamePlayInput/Inveract[/XInputControllerWindows/buttonWest,/XInputControllerWindows1/buttonWest]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3227742021609240017}
+        m_TargetAssemblyTypeName: PlayerControlManager, Assembly-CSharp
+        m_MethodName: GetSabotage
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 718b0989-f8fe-490a-93ba-58455f04a5e3
+    m_ActionName: GamePlayInput/Sabotage[/XInputControllerWindows/buttonWest,/XInputControllerWindows1/buttonWest,/Keyboard/q]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: GamePlayInput
@@ -118,5 +146,11 @@ MonoBehaviour:
       m_Calls: []
   Jump: 0
   JumpEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  SabotageEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  InteractEvent:
     m_PersistentCalls:
       m_Calls: []
