@@ -17,10 +17,11 @@ public class LocationSetting
     public Vector3 Position;
     public Quaternion Rotation;
 }
-public class MovingObj : TriggerObj
+public class MovingObject : TriggerObj
 {
     public float cycleLength = 2f;
     public float WaitTime = 0;
+    public bool ChangeRotation=true;
     public List<LocationSetting> MoveLocations = new List<LocationSetting>();
     private int MoveIndex = 0;
     protected override void StartAction()
@@ -68,7 +69,7 @@ public class MovingObj : TriggerObj
         var tasks=new List<Task>();
 
         tasks.Add(this.transform.DOMove(_target.Position, cycleLength).AsyncWaitForCompletion());
-        tasks.Add(this.transform.DORotate(_target.Rotation.eulerAngles, cycleLength).AsyncWaitForCompletion());
+        if(ChangeRotation) tasks.Add(this.transform.DORotate(_target.Rotation.eulerAngles, cycleLength).AsyncWaitForCompletion());
         await Task.WhenAll(tasks);
         StartCoroutine(WaitForNextMove());
     }
