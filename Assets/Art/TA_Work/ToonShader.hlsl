@@ -28,8 +28,6 @@ in float ToonRampOffset, out float3 ToonRampOutput, out float3 Direction)
         ToonRampOutput = light.color * (toonRamp + ToonRampTinting) ;
 
         Direction = light.direction;
-
-        float4(ToonRampOutput, 1.0)
     #endif
  
 }
