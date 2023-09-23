@@ -8,6 +8,7 @@ public class LaserScript : TriggerObj
     public string TargetTag;
 
     public bool EnableAtStart;
+    private bool LaserOn;
 
     [SerializeField]
     private LineRenderer Laser;
@@ -23,7 +24,7 @@ public class LaserScript : TriggerObj
 
     void ProjectLaser()
     {
-        if (!Laser) return;
+        if (!Laser || !LaserOn) return;
         Transform StartPoint = MuzzlePoint ? MuzzlePoint : this.transform;
         Ray ray = new Ray(StartPoint.position, StartPoint.forward);
         bool IsHit = Physics.Raycast(ray, out RaycastHit hit, MaxLength);
@@ -36,7 +37,7 @@ public class LaserScript : TriggerObj
     {
         if (hit.transform.tag.Equals(TargetTag))
         {
-            Debug.Log("Target hit");
+            if (hit.transform.GetComponent<PlayerScript>()) hit.transform.GetComponent<PlayerScript>().StunFunc();
         }
     }
 
@@ -47,6 +48,7 @@ public class LaserScript : TriggerObj
 
     void SetLaserEnabel(bool i_isOn)
     {
+        LaserOn=i_isOn;
         if (Laser) Laser.enabled = i_isOn;
     }
 

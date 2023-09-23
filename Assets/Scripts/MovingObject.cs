@@ -5,6 +5,7 @@ using DG.Tweening;
 using System.Threading.Tasks;
 using static UnityEngine.GraphicsBuffer;
 using System.Linq;
+using System;
 
 [System.Serializable]
 public class LocationSetting
@@ -66,11 +67,17 @@ public class MovingObject : TriggerObj
     async void MoveObject()
     {
         LocationSetting _target = CurrentTarget();
-        var tasks=new List<Task>();
+        try
+        {
+            var tasks = new List<Task>();
 
-        tasks.Add(this.transform.DOMove(_target.Position, cycleLength).AsyncWaitForCompletion());
-        if(ChangeRotation) tasks.Add(this.transform.DORotate(_target.Rotation.eulerAngles, cycleLength).AsyncWaitForCompletion());
-        await Task.WhenAll(tasks);
-        StartCoroutine(WaitForNextMove());
+            tasks.Add(this.transform.DOMove(_target.Position, cycleLength).AsyncWaitForCompletion());
+            if (ChangeRotation) tasks.Add(this.transform.DORotate(_target.Rotation.eulerAngles, cycleLength).AsyncWaitForCompletion());
+            await Task.WhenAll(tasks);
+            StartCoroutine(WaitForNextMove());
+        }
+        catch (Exception e)
+        { }
+        
     }
 }
