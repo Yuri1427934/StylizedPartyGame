@@ -1863,11 +1863,6 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 185028125371527765, guid: 893235ef703c3574f9491e5226dc6790,
         type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 185028125371527765, guid: 893235ef703c3574f9491e5226dc6790,
-        type: 3}
       propertyPath: controlManager
       value: 
       objectReference: {fileID: 793408156}
@@ -1875,11 +1870,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Player_v2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5740400664791961625, guid: 893235ef703c3574f9491e5226dc6790,
-        type: 3}
-      propertyPath: m_Constraints
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8541790757504464934, guid: 893235ef703c3574f9491e5226dc6790,
         type: 3}
@@ -1930,101 +1920,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8768435660182909651, guid: 893235ef703c3574f9491e5226dc6790,
-        type: 3}
-      propertyPath: JumpForce
-      value: 40
-      objectReference: {fileID: 0}
-    - target: {fileID: 8768435660182909651, guid: 893235ef703c3574f9491e5226dc6790,
-        type: 3}
-      propertyPath: MoveSpeed
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 8768435660182909651, guid: 893235ef703c3574f9491e5226dc6790,
-        type: 3}
-      propertyPath: _leanFactor
-      value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8768435660182909651, guid: 893235ef703c3574f9491e5226dc6790,
-        type: 3}
-      propertyPath: GravityScale
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 8768435660182909651, guid: 893235ef703c3574f9491e5226dc6790,
-        type: 3}
-      propertyPath: acceleration
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 8768435660182909651, guid: 893235ef703c3574f9491e5226dc6790,
-        type: 3}
-      propertyPath: _maxAccelForce
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 8768435660182909651, guid: 893235ef703c3574f9491e5226dc6790,
-        type: 3}
-      propertyPath: uprightspringDamper
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8768435660182909651, guid: 893235ef703c3574f9491e5226dc6790,
-        type: 3}
-      propertyPath: accelerationFactorFromDot.m_Curve.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 8768435660182909651, guid: 893235ef703c3574f9491e5226dc6790,
-        type: 3}
-      propertyPath: accelerationFactorFromDot.m_Curve.Array.data[0].time
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8768435660182909651, guid: 893235ef703c3574f9491e5226dc6790,
-        type: 3}
-      propertyPath: accelerationFactorFromDot.m_Curve.Array.data[2].time
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8768435660182909651, guid: 893235ef703c3574f9491e5226dc6790,
-        type: 3}
-      propertyPath: maxAccelerationForceFactorFromDot.m_Curve.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 8768435660182909651, guid: 893235ef703c3574f9491e5226dc6790,
-        type: 3}
-      propertyPath: accelerationFactorFromDot.m_Curve.Array.data[0].value
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8768435660182909651, guid: 893235ef703c3574f9491e5226dc6790,
-        type: 3}
-      propertyPath: accelerationFactorFromDot.m_Curve.Array.data[1].value
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8768435660182909651, guid: 893235ef703c3574f9491e5226dc6790,
-        type: 3}
-      propertyPath: accelerationFactorFromDot.m_Curve.Array.data[2].value
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8768435660182909651, guid: 893235ef703c3574f9491e5226dc6790,
-        type: 3}
-      propertyPath: maxAccelerationForceFactorFromDot.m_Curve.Array.data[0].time
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8768435660182909651, guid: 893235ef703c3574f9491e5226dc6790,
-        type: 3}
-      propertyPath: maxAccelerationForceFactorFromDot.m_Curve.Array.data[2].time
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8768435660182909651, guid: 893235ef703c3574f9491e5226dc6790,
-        type: 3}
-      propertyPath: maxAccelerationForceFactorFromDot.m_Curve.Array.data[0].value
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8768435660182909651, guid: 893235ef703c3574f9491e5226dc6790,
-        type: 3}
-      propertyPath: maxAccelerationForceFactorFromDot.m_Curve.Array.data[1].value
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8768435660182909651, guid: 893235ef703c3574f9491e5226dc6790,
-        type: 3}
-      propertyPath: maxAccelerationForceFactorFromDot.m_Curve.Array.data[2].value
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
