@@ -11,6 +11,9 @@ public class PlayerScript : MonoBehaviour
     [SerializeField]
     private Rigidbody rb;
 
+    [SerializeField]
+    private string respawnPointId;
+
     [Header("Movement")]
     public float MoveSpeed = 10f;
     public float acceleration = 1f;
@@ -46,6 +49,12 @@ public class PlayerScript : MonoBehaviour
         if (IsStun) return;
         MoveFunc();
         RotateFunc();
+    }
+
+    public void SetRespawnPointId(string i_NewId)
+    {
+        if (!string.IsNullOrEmpty(i_NewId) && !i_NewId.Equals(respawnPointId))
+            respawnPointId = i_NewId;
     }
     #region-Input Methods
     /// <summary>
@@ -168,7 +177,8 @@ public class PlayerScript : MonoBehaviour
     IEnumerator StunTimer()
     {
         IsStun = true;
-        yield return new WaitForSecondsRealtime(3f);
+        if (GameEventManager.instance) GameEventManager.instance.PlayerRespawn.Invoke(this.respawnPointId,this.gameObject);
+        yield return new WaitForSecondsRealtime(0.6f);
         IsStun = false;
     }
     private void OnDrawGizmosSelected()

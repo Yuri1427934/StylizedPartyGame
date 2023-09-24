@@ -7,20 +7,75 @@ public class LaserScript : TriggerObj
 {
     public string TargetTag;
 
-    public MeshRenderer meshRenderer;
-    public Collider LaserCollider;
+    public bool EnableAtStart;
+    private bool LaserOn;
 
-    private void OnTriggerEnter(Collider other)
+    [SerializeField]
+    private LineRenderer Laser;
+    [SerializeField]
+    private Transform MuzzlePoint;
+    [SerializeField]
+    private float MaxLength = 10f;
+
+    private void FixedUpdate()
     {
-        if (other.Equals(TargetTag))
+        ProjectLaser();
+    }
+
+    void ProjectLaser()
+    {
+        if (!Laser || !LaserOn) return;
+        Transform StartPoint = MuzzlePoint ? MuzzlePoint : this.transform;
+        Ray ray = new Ray(StartPoint.position, StartPoint.forward);
+        bool IsHit = Physics.Raycast(ray, out RaycastHit hit, MaxLength);
+        Vector3 HitPos = IsHit ? hit.point : StartPoint.position + StartPoint.forward * MaxLength;
+        if (IsHit) LaserHitCheck(hit);
+        SetLaserPositions(new Vector3[] { StartPoint.position, HitPos });
+    }
+
+    void LaserHitCheck(RaycastHit hit)
+    {
+        if (hit.transform.tag.Equals(TargetTag))
         {
-            if (other.GetComponent<PlayerScript>()) other.GetComponent<PlayerScript>().StunFunc();
+            if (hit.transform.GetComponent<PlayerScript>()) hit.transform.GetComponent<PlayerScript>().StunFunc();
         }
+    }
+
+    protected override void StartAction()
+    {
+        SetLaserEnabel(EnableAtStart);
+    }
+
+    void SetLaserEnabel(bool i_isOn)
+    {
+        LaserOn=i_isOn;
+        if (Laser) Laser.enabled = i_isOn;
+    }
+
+    void SetLaserPositions(Vector3[] i_positions)
+    {
+        if (!Laser) return;
+        if (Laser.positionCount != i_positions.Length)
+            Laser.positionCount = i_positions.Length;
+
+
+        Laser.SetPositions(i_positions);
+    }
+
+    void LaserFlipFlop()
+    {
+        if (Laser) SetLaserEnabel(!Laser.enabled);
     }
 
     public override void TriggerAction()
     {
-        if (meshRenderer) meshRenderer.enabled = !meshRenderer.enabled;
-        if(LaserCollider) LaserCollider.enabled = !LaserCollider.enabled;
+        LaserFlipFlop();
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = new Color(1, 0, 0);
+        Transform StartPoint = MuzzlePoint ? MuzzlePoint : this.transform;
+        Gizmos.DrawLine(StartPoint.position, StartPoint.position+StartPoint.forward * MaxLength);
     }
 }

@@ -8,6 +8,7 @@ public abstract class TriggerObj : MonoBehaviour
     private void Start()
     {
         if (GameEventManager.instance) GameEventManager.instance.ObjectTrigger.AddListener(TriggerFunc);
+        StartAction();
     }
 
     void TriggerFunc(string i_ObjId)
@@ -17,7 +18,10 @@ public abstract class TriggerObj : MonoBehaviour
             TriggerAction();
         }
     }
-
+    protected virtual void StartAction()
+    {
+        
+    }
     public virtual void TriggerAction()
     {
         Debug.Log("Do something");
