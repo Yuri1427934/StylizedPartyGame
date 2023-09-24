@@ -215,6 +215,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+<<<<<<< HEAD
 --- !u!1 &1013364768 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 8a056e9b7169ffc4f9d54d361809c1e5,
@@ -222,19 +223,132 @@ GameObject:
   m_PrefabInstance: {fileID: 1879243615}
   m_PrefabAsset: {fileID: 0}
 --- !u!95 &1013364769
+=======
+--- !u!1001 &869188173
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 8a056e9b7169ffc4f9d54d361809c1e5,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 3.3688
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 8a056e9b7169ffc4f9d54d361809c1e5,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 3.3688
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 8a056e9b7169ffc4f9d54d361809c1e5,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 3.3688
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 8a056e9b7169ffc4f9d54d361809c1e5,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 26.28453
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 8a056e9b7169ffc4f9d54d361809c1e5,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 8a056e9b7169ffc4f9d54d361809c1e5,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.4412179
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 8a056e9b7169ffc4f9d54d361809c1e5,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 8a056e9b7169ffc4f9d54d361809c1e5,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 8a056e9b7169ffc4f9d54d361809c1e5,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 8a056e9b7169ffc4f9d54d361809c1e5,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 8a056e9b7169ffc4f9d54d361809c1e5,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 8a056e9b7169ffc4f9d54d361809c1e5,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 8a056e9b7169ffc4f9d54d361809c1e5,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -5605890689338492082, guid: 8a056e9b7169ffc4f9d54d361809c1e5,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 0c69931bf35528d4bb4aa93fb4c6fe6a, type: 2}
+    - target: {fileID: -4105128595854052475, guid: 8a056e9b7169ffc4f9d54d361809c1e5,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 329ee17f77221f745a2515057482cac9, type: 2}
+    - target: {fileID: 919132149155446097, guid: 8a056e9b7169ffc4f9d54d361809c1e5,
+        type: 3}
+      propertyPath: m_Name
+      value: Character
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 8a056e9b7169ffc4f9d54d361809c1e5,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1491414482}
+  m_SourcePrefab: {fileID: 100100000, guid: 8a056e9b7169ffc4f9d54d361809c1e5, type: 3}
+--- !u!1 &1491414480 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 8a056e9b7169ffc4f9d54d361809c1e5,
+    type: 3}
+  m_PrefabInstance: {fileID: 869188173}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1491414482
+>>>>>>> parent of 0aabd56 (Merge branch 'Tom's-Testing' into Yuri_BranchForTest)
 Animator:
   serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD
   m_GameObject: {fileID: 1013364768}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 8a056e9b7169ffc4f9d54d361809c1e5, type: 3}
   m_Controller: {fileID: 9100000, guid: 7d12ea1ca2edbff4dabddcc795bd9dbf, type: 2}
+=======
+  m_GameObject: {fileID: 1491414480}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 16a328e8ab5499d41b71778c8cdd0aa3, type: 2}
+>>>>>>> parent of 0aabd56 (Merge branch 'Tom's-Testing' into Yuri_BranchForTest)
   m_CullingMode: 0
   m_UpdateMode: 0
-  m_ApplyRootMotion: 1
+  m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_WarningMessage: 
@@ -242,6 +356,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+<<<<<<< HEAD
 --- !u!1 &1661088117
 GameObject:
   m_ObjectHideFlags: 0
@@ -348,6 +463,8 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+=======
+>>>>>>> parent of 0aabd56 (Merge branch 'Tom's-Testing' into Yuri_BranchForTest)
 --- !u!1 &1862269698
 GameObject:
   m_ObjectHideFlags: 0
@@ -569,5 +686,9 @@ SceneRoots:
   m_Roots:
   - {fileID: 251598931}
   - {fileID: 1862269700}
+<<<<<<< HEAD
   - {fileID: 1879243615}
   - {fileID: 1661088121}
+=======
+  - {fileID: 869188173}
+>>>>>>> parent of 0aabd56 (Merge branch 'Tom's-Testing' into Yuri_BranchForTest)
