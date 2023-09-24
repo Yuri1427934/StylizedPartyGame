@@ -6,14 +6,15 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     private Rigidbody rb;
-
-    private Vector3 targetVelocity=Vector3.zero;
+    [SerializeField]
+    private Animator characterAnimator;
+    private Vector3 targetVelocity = Vector3.zero;
     [SerializeField]
     private float MoveSpeed = 10f;
     [SerializeField]
     private float acceleration = 1f;
     private float speedFactor = 1f;
-    [SerializeField] 
+    [SerializeField]
     private AnimationCurve accelerationFactorFromDot;
     [SerializeField]
     private AnimationCurve maxAccelerationForceFactorFromDot;
@@ -26,8 +27,8 @@ public class PlayerMovement : MonoBehaviour
     private float GravityScale = 2f;
 
     [Header("Floating effect")]
-    private Vector3 rayDir=Vector3.down;
-   
+    private Vector3 rayDir = Vector3.down;
+
     [SerializeField]
     private float groundMaxDis = 1.5f;
     [SerializeField]
@@ -80,7 +81,7 @@ public class PlayerMovement : MonoBehaviour
         this.rb.AddForce(rayDir * sprignForce);
     }
 
-    void KeepUpright(Vector3 lookAt,RaycastHit hit=new RaycastHit())
+    void KeepUpright(Vector3 lookAt, RaycastHit hit = new RaycastHit())
     {
         if (lookAt != Vector3.zero)
             _uprightTargetRot = Quaternion.LookRotation(lookAt, Vector3.up);
@@ -108,7 +109,7 @@ public class PlayerMovement : MonoBehaviour
         return new Quaternion(input.x * scalar, input.y * scalar, input.z * scalar, input.w * scalar);
     }
 
-    private (bool ,RaycastHit ) RayGround()
+    private (bool, RaycastHit) RayGround()
     {
         RaycastHit hit;
         Ray ray = new Ray(transform.position, rayDir);
@@ -117,6 +118,7 @@ public class PlayerMovement : MonoBehaviour
             IsGround = hit.distance <= rideHeight * 1.3f;//add some buffer
         else
             IsGround = false;
+        if (characterAnimator) characterAnimator.SetBool("IsGround", IsGround);
         return (rayHitGround, hit);
     }
 
@@ -138,11 +140,16 @@ public class PlayerMovement : MonoBehaviour
         Vector3 neededAccel = (targetVelocity - rb.velocity) / Time.fixedDeltaTime;
         float maxAccel = _maxAccelForce * maxAccelerationForceFactorFromDot.Evaluate(velDot) * maxAccelForceFactor;
         neededAccel = Vector3.ClampMagnitude(neededAccel, maxAccel);
+        if (characterAnimator) characterAnimator.SetFloat("MoveSpeed", Mathf.Clamp(rb.velocity.magnitude / MoveSpeed, 0, 1));
         rb.AddForceAtPosition(Vector3.Scale(neededAccel * rb.mass, _moveForceScale), transform.position + new Vector3(0f, transform.localScale.y * _leanFactor, 0f));
     }
     public void CharacterJump()
     {
-        if(IsGround) this.rb.AddForce(Vector3.up * JumpForce, ForceMode.Impulse);
+        if (IsGround)
+        {
+            this.rb.AddForce(Vector3.up * JumpForce, ForceMode.Impulse);
+            if (characterAnimator) characterAnimator.SetTrigger("Jump");
+        }
     }
 
     private void OnDrawGizmosSelected()
