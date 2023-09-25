@@ -32,7 +32,7 @@ public class PlayerSpawner : MonoBehaviour
         {
             GUIStyle myStyle = new GUIStyle();
             myStyle.fontSize = 20;
-            GUI.Label(new Rect(10, 10, 250, 20), "Press A or Enter to join", myStyle);
+            GUI.Label(new Rect(10, 10, 250, 20), "Press Start or Enter to join", myStyle);
         }
     }
 }
