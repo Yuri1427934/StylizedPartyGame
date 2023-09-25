@@ -4,12 +4,15 @@ using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 
+[RequireComponent(typeof(PlayerMovement))]
 public class PlayerScript : MonoBehaviour
 {
     [SerializeField]
     private PlayerControlManager controlManager;
     [SerializeField]
     private Rigidbody rb;
+
+    private PlayerMovement momvementController;
 
     [SerializeField]
     private string respawnPointId;
@@ -20,6 +23,7 @@ public class PlayerScript : MonoBehaviour
     public float decceleration = -1f;
     public float VelPower = 1f;
     public float JumpForce = 10;
+
 
     [Header("GroundChecking")]
     public Vector3 CheckPosition;
@@ -35,20 +39,20 @@ public class PlayerScript : MonoBehaviour
     {
         if (rb == null) rb.GetComponent<Rigidbody>();
         if (controlManager) SetController(controlManager);
+        momvementController=GetComponent<PlayerMovement>();
     }
 
 
 
     private void Update()
     {
-        FallMul();
     }
 
     private void FixedUpdate()
     {
         if (IsStun) return;
         MoveFunc();
-        RotateFunc();
+        //RotateFunc();
     }
 
     public void SetRespawnPointId(string i_NewId)
@@ -83,7 +87,7 @@ public class PlayerScript : MonoBehaviour
     /// <param name="i_jump"></param>
     private void GetJumpInput(bool i_jump)
     {
-        if (i_jump && IsGround()) this.rb.AddForce(Vector3.up * JumpForce, ForceMode.Impulse);
+        if (i_jump) momvementController.CharacterJump();
     }
 
     private void GetInteractInput()
@@ -105,22 +109,16 @@ public class PlayerScript : MonoBehaviour
         }
 
     }
-
-    /// <summary>
-    /// If player is in air, multiply the gravity
-    /// </summary>
-    void FallMul()
-    {
-        if (!IsGround() && this.rb.velocity.y < 0) this.rb.AddForce(Vector3.up * GravityScale * Physics.gravity.y);
-    }
+   
 
     /// <summary>
     /// Set player movement
     /// </summary>
     void MoveFunc()
     {
-        if (!rb) return;
-        this.rb.AddForce(GetMovement());
+        //if (!rb) return;
+        //this.rb.AddForce(GetMovement());
+        momvementController.MoveCharacter(GetRelativeMovement());
     }
     /// <summary>
     /// Check player is on ground
@@ -138,7 +136,6 @@ public class PlayerScript : MonoBehaviour
     /// <returns></returns>
     public Vector3 GetMovement()
     {
-
         Vector3 TargetSpeed = GetRelativeMovement() * MoveSpeed;
         return new Vector3(GetDirForce(TargetSpeed.x, rb.velocity.x), 0, GetDirForce(TargetSpeed.z, rb.velocity.z));
     }
