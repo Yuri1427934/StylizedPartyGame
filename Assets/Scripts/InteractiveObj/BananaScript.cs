@@ -13,8 +13,13 @@ public class BananaScript : MonoBehaviour,IInteractive
     private Rigidbody rb_projectile;
     Vector3 startPos;
     Vector3 startVelocity;
+    [SerializeField]
     float initialForce = 75f;
+    [SerializeField]
     float initialAngle = -45f;
+
+    [SerializeField]
+    float mass = 5;
     Quaternion rotation;
     int i = 0; //index of renderer
     int numberOfPoints = 10;
@@ -48,7 +53,7 @@ public class BananaScript : MonoBehaviour,IInteractive
         lineRenderer.positionCount = numberOfPoints;
         lineRenderer.enabled = true;
         startPos = releasePos.transform.position;
-        startVelocity = rotation * (initialForce * releasePos.transform.forward) / 5 ;
+        startVelocity = rotation * (initialForce * releasePos.transform.forward) / mass ;
         lineRenderer.SetPosition(i, startPos);
 
         for(float j = 0; i < lineRenderer.positionCount-1; j += timer)
