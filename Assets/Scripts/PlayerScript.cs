@@ -13,25 +13,10 @@ public class PlayerScript : MonoBehaviour
     private Rigidbody rb;
 
     private PlayerMovement momvementController;
-
     [SerializeField]
     private string respawnPointId;
-
-    [Header("Movement")]
-    public float MoveSpeed = 10f;
-    public float acceleration = 1f;
-    public float decceleration = -1f;
-    public float VelPower = 1f;
-    public float JumpForce = 10;
-
-
-    [Header("GroundChecking")]
-    public Vector3 CheckPosition;
-    public Vector3 CheckSize;
-    public LayerMask GroundLayers;
     [Header("Info")]
     private bool IsStun;
-    public float GravityScale = 2f;
 
     [SerializeField]
     protected Vector3 Movement;
@@ -52,7 +37,6 @@ public class PlayerScript : MonoBehaviour
     {
         if (IsStun) return;
         MoveFunc();
-        //RotateFunc();
     }
 
     public void SetRespawnPointId(string i_NewId)
@@ -97,21 +81,6 @@ public class PlayerScript : MonoBehaviour
     #endregion
     #region-Movement Methods
     /// <summary>
-    /// For player rotate to the direction
-    /// </summary>
-    void RotateFunc()
-    {
-        if (Movement.magnitude > 0)
-        {
-            float singleStep = 100 * Time.deltaTime;
-            Vector3 newDirection = Vector3.RotateTowards(transform.forward, GetRelativeMovement(), singleStep, 0.0f);
-            this.rb.rotation = Quaternion.LookRotation(newDirection);
-        }
-
-    }
-   
-
-    /// <summary>
     /// Set player movement
     /// </summary>
     void MoveFunc()
@@ -120,25 +89,9 @@ public class PlayerScript : MonoBehaviour
         //this.rb.AddForce(GetMovement());
         momvementController.MoveCharacter(GetRelativeMovement());
     }
-    /// <summary>
-    /// Check player is on ground
-    /// </summary>
-    /// <returns></returns>
-    public bool IsGround()
-    {
-        return Physics.OverlapBox(this.transform.position + CheckPosition, CheckSize, Quaternion.identity, GroundLayers).Count() > 0;
-    }
     #endregion
     #region-Calculate Methods
-    /// <summary>
-    /// Get the force of the movement
-    /// </summary>
-    /// <returns></returns>
-    public Vector3 GetMovement()
-    {
-        Vector3 TargetSpeed = GetRelativeMovement() * MoveSpeed;
-        return new Vector3(GetDirForce(TargetSpeed.x, rb.velocity.x), 0, GetDirForce(TargetSpeed.z, rb.velocity.z));
-    }
+
 
     public Vector3 GetRelativeMovement()
     {
@@ -149,19 +102,6 @@ public class PlayerScript : MonoBehaviour
         Camf = Camf.normalized;
         Camr = Camr.normalized;
         return Movement.x * Camr + Movement.z * Camf;
-    }
-
-    /// <summary>
-    /// Get the force calculate of the direction
-    /// </summary>
-    /// <param name="TargetSpeed"></param>
-    /// <param name="rbVel"></param>
-    /// <returns></returns>
-    float GetDirForce(float TargetSpeed, float rbVel)
-    {
-        float SpeedDif = TargetSpeed - rbVel;
-        float accelRate = (Mathf.Abs(TargetSpeed) > 0.01f) ? acceleration : decceleration;
-        return Mathf.Pow(Mathf.Abs(SpeedDif) * accelRate, VelPower) * Mathf.Sign(SpeedDif);
     }
     #endregion
 
@@ -177,10 +117,5 @@ public class PlayerScript : MonoBehaviour
         if (GameEventManager.instance) GameEventManager.instance.PlayerRespawn.Invoke(this.respawnPointId,this.gameObject);
         yield return new WaitForSecondsRealtime(0.6f);
         IsStun = false;
-    }
-    private void OnDrawGizmosSelected()
-    {
-        Gizmos.color = new Color(1, 0, 0);
-        Gizmos.DrawWireCube(this.transform.position + CheckPosition, CheckSize);
     }
 }
