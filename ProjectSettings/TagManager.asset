@@ -7,6 +7,7 @@ TagManager:
   - Projectile
   - LookAt
   - Trap
+  - Net
   layers:
   - Default
   - TransparentFX
