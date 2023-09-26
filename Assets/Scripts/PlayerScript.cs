@@ -5,10 +5,13 @@ using Unity.VisualScripting;
 using UnityEngine;
 
 [RequireComponent(typeof(PlayerMovement))]
+[RequireComponent(typeof(Projectile))]
 public class PlayerScript : MonoBehaviour
 {
     [SerializeField]
     private PlayerControlManager controlManager;
+
+    private Projectile ShootManager;
     [SerializeField]
     private Rigidbody rb;
 
@@ -24,7 +27,8 @@ public class PlayerScript : MonoBehaviour
     {
         if (rb == null) rb.GetComponent<Rigidbody>();
         if (controlManager) SetController(controlManager);
-        momvementController=GetComponent<PlayerMovement>();
+        momvementController = GetComponent<PlayerMovement>();
+        ShootManager = GetComponent<Projectile>();
     }
 
 
@@ -76,7 +80,8 @@ public class PlayerScript : MonoBehaviour
 
     private void GetInteractInput()
     {
-        Debug.Log("Interact");
+        if (ShootManager)
+            ShootManager.Shoot();
     }
     #endregion
     #region-Movement Methods
@@ -114,7 +119,7 @@ public class PlayerScript : MonoBehaviour
     IEnumerator StunTimer()
     {
         IsStun = true;
-        if (GameEventManager.instance) GameEventManager.instance.PlayerRespawn.Invoke(this.respawnPointId,this.gameObject);
+        if (GameEventManager.instance) GameEventManager.instance.PlayerRespawn.Invoke(this.respawnPointId, this.gameObject);
         yield return new WaitForSecondsRealtime(0.6f);
         IsStun = false;
     }
