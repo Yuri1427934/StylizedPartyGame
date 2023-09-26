@@ -8,6 +8,7 @@ public class PlayerSpawner : MonoBehaviour
     public Transform spawnPos;
     public RespawnManager respawnManager;
     public GameObject playerObj;
+    public List<Material> PlayerColors;
     public int maxPlayerNumber = 4;
     private int playerNumber = 0;
     public void OnPlayerJoined(PlayerInput i_player)
@@ -18,7 +19,7 @@ public class PlayerSpawner : MonoBehaviour
         if (respawnManager) respawnManager.SetPlayerRespawn(newPlayer);
         if (newPlayer.GetComponent<PlayerScript>() && i_player.GetComponent<PlayerControlManager>())
         {
-
+            if (PlayerColors.Count > playerNumber) newPlayer.GetComponent<PlayerScript>().SetCharacter(PlayerColors[playerNumber]);
             newPlayer.GetComponent<PlayerScript>().SetController(i_player.GetComponent<PlayerControlManager>());
         }
 

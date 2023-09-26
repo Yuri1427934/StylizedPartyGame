@@ -16,6 +16,7 @@ public class PlayerScript : MonoBehaviour
     private Rigidbody rb;
 
     private PlayerMovement momvementController;
+    public SkinnedMeshRenderer skinMeshrenderer;
     [SerializeField]
     private string respawnPointId;
     [Header("Info")]
@@ -59,6 +60,14 @@ public class PlayerScript : MonoBehaviour
         i_controller.MovementEvent.AddListener(GetMovementInput);
         i_controller.JumpEvent.AddListener(GetJumpInput);
         i_controller.InteractEvent.AddListener(GetInteractInput);
+    }
+
+    public void SetCharacter(Material i_mat)
+    {
+        if (skinMeshrenderer)
+        {
+            skinMeshrenderer.material = i_mat;
+        }
     }
     /// <summary>
     /// Get the input of movement

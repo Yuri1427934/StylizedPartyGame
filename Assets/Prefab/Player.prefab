@@ -128,18 +128,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controlManager: {fileID: 0}
   rb: {fileID: 5740400664791961625}
+  skinMeshrenderer: {fileID: 0}
   respawnPointId: 
-  MoveSpeed: 10
-  acceleration: 2
-  decceleration: 5
-  VelPower: 1.2
-  JumpForce: 5
-  CheckPosition: {x: 0, y: -1, z: 0}
-  CheckSize: {x: 0.6, y: 0.2, z: 0.6}
-  GroundLayers:
-    serializedVersion: 2
-    m_Bits: 8
-  GravityScale: 0.2
   Movement: {x: 0, y: 0, z: 0}
 --- !u!54 &5740400664791961625
 Rigidbody:
@@ -221,10 +211,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a23c0cd23c22b6a448d830a1741feac8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lineRenderer: {fileID: 430149528892690142}
+  Purple: {fileID: 0}
+  defaultMat: {fileID: 0}
+  releasePos: {fileID: 1388383552402800244}
   projectile: {fileID: 2901140665882688013, guid: ea2716bc898a31f429a368280409f297,
     type: 3}
-  releasePos: {fileID: 7993838496226568876}
+  RangeOfTrapDetectionFromPlayer: 25
+  minimumDistanceFromTrapRequiredToShoot: 15
 --- !u!120 &430149528892690142
 LineRenderer:
   serializedVersion: 2
