@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 185028125371527765}
   - component: {fileID: 8768435660182909651}
   - component: {fileID: 1796714346901561756}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player_v2
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -157,6 +157,12 @@ MonoBehaviour:
   skinMeshrenderer: {fileID: 2008561177378471667}
   respawnPointId: 
   Movement: {x: 0, y: 0, z: 0}
+  shoveDistance: 0.5
+  shoveSize: {x: 1, y: 0.8, z: 0.6}
+  shoveForce: 50
+  shoveTargetLayer:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!114 &8768435660182909651
 MonoBehaviour:
   m_ObjectHideFlags: 0

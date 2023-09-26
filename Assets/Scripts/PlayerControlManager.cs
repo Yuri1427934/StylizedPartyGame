@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using static UnityEngine.InputSystem.InputAction;
@@ -20,7 +18,7 @@ public class PlayerControlManager : MonoBehaviour
     /// </summary>
     public UnityEvent<bool> JumpEvent;
 
-    public UnityEvent SabotageEvent;
+    public UnityEvent ShoveEvent;
 
     public UnityEvent InteractEvent;
     /// <summary>
@@ -49,10 +47,10 @@ public class PlayerControlManager : MonoBehaviour
     /// Get Sabotage input
     /// </summary>
     /// <param name="i_input"></param>
-    public void GetSabotage(CallbackContext i_input)
+    public void GetShove(CallbackContext i_input)
     {
         if (i_input.started) return;
-        if (i_input.performed) SabotageEvent.Invoke();
+        if (i_input.performed) ShoveEvent.Invoke();
     }
 
     /// <summary>

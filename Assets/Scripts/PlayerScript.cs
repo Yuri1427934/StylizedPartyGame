@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,6 +25,14 @@ public class PlayerScript : MonoBehaviour
 
     [SerializeField]
     protected Vector3 Movement;
+    [SerializeField]
+    private float shoveDistance;
+    [SerializeField]
+    private Vector3 shoveSize;
+    [SerializeField]
+    private float shoveForce = 100f;
+    [SerializeField]
+    private LayerMask shoveTargetLayer;
     private void Awake()
     {
         if (rb == null) rb.GetComponent<Rigidbody>();
@@ -60,6 +69,7 @@ public class PlayerScript : MonoBehaviour
         i_controller.MovementEvent.AddListener(GetMovementInput);
         i_controller.JumpEvent.AddListener(GetJumpInput);
         i_controller.InteractEvent.AddListener(GetInteractInput);
+        i_controller.ShoveEvent.AddListener(GetShoveInput);
     }
 
     public void SetCharacter(Material i_mat)
@@ -76,6 +86,32 @@ public class PlayerScript : MonoBehaviour
     private void GetMovementInput(Vector3 i_movement)
     {
         this.Movement = i_movement;
+    }
+
+    public void GetShoveInput()
+    {
+        Debug.Log("Shove");
+        ShoveAction();
+    }
+
+    void ShoveAction()
+    {
+        Vector3 ShovePos = this.transform.position + this.transform.forward * shoveDistance;
+        var objs = Physics.OverlapBox(ShovePos, shoveSize, transform.rotation, shoveTargetLayer);
+        foreach (var _target in objs)
+        {
+            if (_target.gameObject == this.gameObject) continue;
+            if (_target.GetComponent<PlayerScript>())
+            {
+
+                _target.GetComponent<PlayerScript>().GetShoved((_target.transform.position - this.transform.position) * shoveForce, _target.ClosestPoint(ShovePos));
+            }
+        }
+    }
+
+    public void GetShoved(Vector3 i_force, Vector3 i_position)
+    {
+        rb.AddForceAtPosition(i_force, i_position, ForceMode.Impulse);
     }
 
     /// <summary>
@@ -130,9 +166,20 @@ public class PlayerScript : MonoBehaviour
         IsStun = true;
         momvementController.SetStun(IsStun);
         yield return new WaitForSecondsRealtime(1.2f);
-        if (GameEventManager.instance) GameEventManager.instance.PlayerRespawn.Invoke(this.respawnPointId, this.gameObject);
+        RespawnPlayer();
         yield return new WaitForSecondsRealtime(0.3f);
         IsStun = false;
         momvementController.SetStun(IsStun);
+    }
+
+    public void RespawnPlayer()
+    {
+        if (GameEventManager.instance) GameEventManager.instance.PlayerRespawn.Invoke(this.respawnPointId, this.gameObject);
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = new Color(1, 0, 0);
+        Gizmos.DrawWireCube(this.transform.position + this.transform.forward * shoveDistance, shoveSize);
     }
 }

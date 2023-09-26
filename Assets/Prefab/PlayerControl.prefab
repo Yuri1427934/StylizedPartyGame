@@ -111,7 +111,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 3227742021609240017}
         m_TargetAssemblyTypeName: PlayerControlManager, Assembly-CSharp
-        m_MethodName: GetSabotage
+        m_MethodName: GetShove
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -148,7 +148,7 @@ MonoBehaviour:
   JumpEvent:
     m_PersistentCalls:
       m_Calls: []
-  SabotageEvent:
+  ShoveEvent:
     m_PersistentCalls:
       m_Calls: []
   InteractEvent:
