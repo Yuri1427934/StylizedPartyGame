@@ -6,6 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/InputDemo.unity
-    guid: 99c9720ab356a0642a771bea13969a05
+    path: Assets/Scenes/Gym/Gym_LaserRoom.unity
+    guid: d20977a0f3ea95746b3a4e8eb2c569fb
   m_configObjects: {}

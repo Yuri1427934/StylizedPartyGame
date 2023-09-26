@@ -48,6 +48,8 @@ public class PlayerMovement : MonoBehaviour
     private float JumpForce = 5f;
     private bool IsGround;
 
+    private bool IsStun;
+
     private Quaternion _uprightTargetRot = Quaternion.identity; // Adjust y value to match the desired direction to face.
 
     private void Awake()
@@ -56,12 +58,20 @@ public class PlayerMovement : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        (bool rayHitGround, RaycastHit rayHit) = RayGround();
-        if (rayHitGround) SetFloating(rayHit);
-        Vector3 velocity = rb.velocity;
-        velocity.y = 0;
-        KeepUpright(velocity, rayHit);
+        if (!IsStun)
+        {
+            (bool rayHitGround, RaycastHit rayHit) = RayGround();
+            if (rayHitGround) SetFloating(rayHit);
+            Vector3 velocity = rb.velocity;
+            velocity.y = 0;
+            KeepUpright(velocity, rayHit);
+        }
         FallMul();
+    }
+
+    public void SetStun(bool i_isStun)
+    {
+        this.IsStun = i_isStun;
     }
 
     void SetFloating(RaycastHit hit)
@@ -145,7 +155,7 @@ public class PlayerMovement : MonoBehaviour
     }
     public void CharacterJump()
     {
-        if (IsGround)
+        if (IsGround && !IsStun)
         {
             this.rb.AddForce(Vector3.up * JumpForce, ForceMode.Impulse);
             if (characterAnimator) characterAnimator.SetTrigger("Jump");

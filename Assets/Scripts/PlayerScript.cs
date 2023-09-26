@@ -119,8 +119,11 @@ public class PlayerScript : MonoBehaviour
     IEnumerator StunTimer()
     {
         IsStun = true;
+        momvementController.SetStun(IsStun);
+        yield return new WaitForSecondsRealtime(1.2f);
         if (GameEventManager.instance) GameEventManager.instance.PlayerRespawn.Invoke(this.respawnPointId, this.gameObject);
-        yield return new WaitForSecondsRealtime(0.6f);
+        yield return new WaitForSecondsRealtime(0.3f);
         IsStun = false;
+        momvementController.SetStun(IsStun);
     }
 }
