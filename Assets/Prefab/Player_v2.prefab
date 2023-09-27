@@ -275,7 +275,7 @@ MonoBehaviour:
   releasePos: {fileID: 5116791565497684702}
   projectile: {fileID: 2901140665882688013, guid: ea2716bc898a31f429a368280409f297,
     type: 3}
-  RangeOfTrapDetectionFromPlayer: 50
+  RangeOfTrapDetectionFromPlayer: 25
   minimumDistanceFromTrapRequiredToShoot: 15
 --- !u!1 &4113233311449719729
 GameObject:
