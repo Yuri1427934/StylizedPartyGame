@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class Projectile : MonoBehaviour,IInteractive
+public class Projectile : MonoBehaviour, IInteractive
 {
     private GameObject Rope;
     [SerializeField]
@@ -29,13 +29,13 @@ public class Projectile : MonoBehaviour,IInteractive
 
         foreach (var hitCollider in hitColliders)
         {
-            if(hitCollider.gameObject.tag == "Trap" && Vector3.Distance(hitCollider.transform.position, transform.position) < minimumDistanceFromTrapRequiredToShoot)
+            if (hitCollider.gameObject.tag == "Trap" && Vector3.Distance(hitCollider.transform.position, transform.position) < minimumDistanceFromTrapRequiredToShoot)
             {
                 Rope = hitCollider.gameObject;
                 Rope.GetComponent<MeshRenderer>().material = Purple;
                 canShoot = true;
             }
-            else if(Rope && Vector3.Distance(Rope.transform.position, transform.position) > minimumDistanceFromTrapRequiredToShoot)
+            else if (Rope && Vector3.Distance(Rope.transform.position, transform.position) > minimumDistanceFromTrapRequiredToShoot)
             {
                 Rope.GetComponent<MeshRenderer>().material = defaultMat;
                 canShoot = false;
@@ -45,11 +45,13 @@ public class Projectile : MonoBehaviour,IInteractive
     }
     public void Shoot()
     {
-        if(canShoot)
+        if (canShoot && Rope)
         {
             var step = Time.deltaTime * 10;
-            var instance = Instantiate(projectile, releasePos.position, transform.rotation);
+            GameObject instance = Instantiate(projectile, releasePos.position, transform.rotation);
             instance.GetComponent<Rigidbody>().AddForce(10 * (Rope.transform.position - releasePos.position));
+            Destroy(instance, 3f);
+
         }
 
     }

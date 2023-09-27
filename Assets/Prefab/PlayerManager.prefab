@@ -119,6 +119,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55b3e33610ed5d146b59a41923c5c08f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SpawnPos: {fileID: 0}
-  PlayerObj: {fileID: 1798295555121181307, guid: eebc7992292e72f4a866a5cda2cc7726,
+  spawnPos: {fileID: 0}
+  respawnManager: {fileID: 0}
+  playerObj: {fileID: 1798295555121181307, guid: 893235ef703c3574f9491e5226dc6790,
     type: 3}
+  PlayerColors:
+  - {fileID: 2100000, guid: 0c69931bf35528d4bb4aa93fb4c6fe6a, type: 2}
+  - {fileID: 2100000, guid: 6f013e0eee5b6e2459780c61ddf772cc, type: 2}
+  - {fileID: 2100000, guid: e5126455856305a439f5f9124ed59d18, type: 2}
+  - {fileID: 2100000, guid: 54988439c2df4e94bbd0fd32d6e1a067, type: 2}
+  maxPlayerNumber: 4
